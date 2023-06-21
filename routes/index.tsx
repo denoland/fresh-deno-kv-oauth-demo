@@ -41,7 +41,7 @@ export default function HomePage(props: PageProps<Data>) {
         <a href="/signout">Sign out</a>
       </p>
       <p>
-        <a href="https://deno.land/x/deno_kv_oauth/demo.ts?source">
+        <a href="https://github.com/iuioiua/fresh-deno-kv-oauth-demo">
           Source code
         </a>
       </p>
