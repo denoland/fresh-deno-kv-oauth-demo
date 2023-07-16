@@ -10,7 +10,7 @@ interface Data {
 export const handler: Handlers<Data> = {
   async GET(req, ctx) {
     const sessionId = await getSessionId(req);
-    const isSignedIn = sessionId !== null;
+    const isSignedIn = sessionId !== undefined;
     const accessToken = isSignedIn
       ? await getSessionAccessToken(oauth2Client, sessionId)
       : null;
