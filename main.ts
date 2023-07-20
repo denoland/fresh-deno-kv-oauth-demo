@@ -11,4 +11,4 @@ import manifest from "./fresh.gen.ts";
 
 import { plugin } from "./utils/kv_oauth.ts";
 
-await start(manifest, { plugins: [plugin()] });
+await start(manifest, { plugins: [plugin] });
