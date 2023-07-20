@@ -1,26 +1,13 @@
-import type { Handlers, PageProps } from "$fresh/server.ts";
 import { getSessionAccessToken, getSessionId } from "kv_oauth";
-import { oauth2Client } from "../utils/oauth2_client.ts";
+import { oauth2Client } from "../utils/kv_oauth.ts";
 
-interface Data {
-  isSignedIn: boolean;
-  accessToken: null | string;
-}
+export default async function HomePage(req: Request) {
+  const sessionId = await getSessionId(req);
+  const isSignedIn = sessionId !== undefined;
+  const accessToken = isSignedIn
+    ? await getSessionAccessToken(oauth2Client, sessionId)
+    : null;
 
-export const handler: Handlers<Data> = {
-  async GET(req, ctx) {
-    const sessionId = await getSessionId(req);
-    const isSignedIn = sessionId !== undefined;
-    const accessToken = isSignedIn
-      ? await getSessionAccessToken(oauth2Client, sessionId)
-      : null;
-
-    return ctx.render({ isSignedIn, accessToken });
-  },
-};
-
-export default function HomePage(props: PageProps<Data>) {
-  const { isSignedIn, accessToken } = props.data;
   return (
     <>
       <p>Provider: GitHub</p>
