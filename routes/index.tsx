@@ -1,4 +1,4 @@
-import { getSessionAccessToken, getSessionId } from "kv_oauth";
+import { getSessionAccessToken, getSessionId } from "kv_oauth/mod.ts";
 import { oauth2Client } from "../utils/kv_oauth.ts";
 
 export default async function HomePage(req: Request) {
@@ -22,10 +22,10 @@ export default async function HomePage(req: Request) {
           : null}
       </p>
       <p>
-        <a href="/signin">Sign in</a>
+        <a href="/oauth/signin">Sign in</a>
       </p>
       <p>
-        <a href="/signout">Sign out</a>
+        <a href="/oauth/signout">Sign out</a>
       </p>
       <p>
         <a href="https://github.com/denoland/fresh-deno-kv-oauth-demo">
