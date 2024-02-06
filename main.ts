@@ -8,7 +8,6 @@ import "$std/dotenv/load.ts";
 
 import { start } from "$fresh/server.ts";
 import manifest from "./fresh.gen.ts";
-import { kvOAuthPlugin } from "kv_oauth/fresh.ts";
-import { oauth2Client } from "./utils/kv_oauth.ts";
+import kv_oauth_plugin from "./plugins/kv_oauth.ts";
 
-await start(manifest, { plugins: [kvOAuthPlugin(oauth2Client)] });
+await start(manifest, { plugins: [kv_oauth_plugin] });
